@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import 'bootstrap/dist/css/bootstrap.css';
+import { useState } from "react";
+import Pagination from "./components/Pagination";
+
 
 function App() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 25;
+
+  function handlePageChange(pageNumber) {
+    console.log("current page: ",pageNumber);
+    setCurrentPage(pageNumber);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>HELLO</h1>
+      <Pagination totalPages={totalPages} displayRange={5} currentPage={currentPage} onPageFlip={handlePageChange} />
     </div>
   );
 }
